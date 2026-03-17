@@ -31,9 +31,9 @@ class Event
     #[ORM\Column(length: 255)]
     private ?string $speaker = null;
 
-    #[ORM\ManyToOne(inversedBy: 'events')]
+    #[ORM\ManyToOne(inversedBy: "events")]
     #[ORM\JoinColumn(nullable: false)]
-    private ?promo $promo = null;
+    private ?Promo $promo = null;
 
     public function getId(): ?int
     {
@@ -112,12 +112,12 @@ class Event
         return $this;
     }
 
-    public function getPromo(): ?promo
+    public function getPromo(): ?Promo
     {
         return $this->promo;
     }
 
-    public function setPromo(?promo $promo): static
+    public function setPromo(?Promo $promo): static
     {
         $this->promo = $promo;
 

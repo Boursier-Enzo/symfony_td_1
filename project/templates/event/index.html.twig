@@ -1,21 +1,43 @@
 {% extends 'base.html.twig' %}
 
-{% block title %}Hello EventController!{% endblock %}
-
 {% block body %}
-<style>
-    .example-wrapper { width: 100%; font: 18px/1.5 sans-serif; }
-    .example-wrapper code { background: #F5F5F5;}
-</style>
+    {% if app.user %}
+        {% include 'layouts/nav.html.twig' %}
+    {% endif %}
 
-<div class="example-wrapper">
-    {% include 'layouts/nav.html.twig' %}
-    <h1>Hello {{ controller_name }}! ✅</h1>
+    <h1>Liste des event</h1>
 
-    This friendly message is coming from:
-    <ul>
-        <li>Your controller at <code>/var/www/src/Controller/EventController.php</code></li>
-        <li>Your template at <code>/var/www/templates/event/index.html.twig</code></li>
-    </ul>
-</div>
+    <a href="{{ path('admin') }}">Créer un event</a>
+
+    {% if eventList is empty %}
+        <p>Aucun event pour le moment.</p>
+    {% else %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Titre</th>
+                    <th>Description</th>
+                    <th>Date de début</th>
+                    <th>Date de fin</th>
+                    <th>Salle de classe</th>
+                    <th>Intervenant</th>
+                    <th>Promo</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for event in eventList %}
+                    <tr>
+                        <td>{{ event.title }}</td>
+                        <td>{{ event.description }}</td>
+                        <td>{{ event.startDate|date('d/m/Y') }}</td>
+                        <td>{{ event.endDate ? event.endDate|date('d/m/Y') : '-' }}</td>
+                        <td>{{ event.room}}</td>
+                        <td>{{ event.speaker}}</td>
+                        <td>{{ event.promo}}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+
 {% endblock %}

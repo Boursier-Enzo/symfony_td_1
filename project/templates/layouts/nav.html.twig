@@ -1,8 +1,10 @@
 <style>
-    .nav-wrapper { height:4rem; width: 100%; background-color: #f1f2f3; display:flex; align-items: center; justify-content: center;}
+    .nav-wrapper { height:4rem; width: 100%; background-color: #f1f2f3; display:flex; align-items: center; justify-content: center; gap: 1rem;}
     .nav-btn { padding: 0.6rem; background-color: #121314; color: #f1f2f3; cursor: pointer; border: none; border-radius: 1rem; text-decoration: none;}
 </style>
 
 <div class="nav-wrapper">
-    <a class='nav-btn' href="{{ logout_path() }}">Logout</a>
+    <a class='nav-btn' href="{{ path('app_home') }}">Accueil</a>
+    <a class='nav-btn' href="{{ path('admin') }}">Admin</a>
+    <a class='nav-btn' href="{{ path('app_logout') }}">Logout</a>
 </div>

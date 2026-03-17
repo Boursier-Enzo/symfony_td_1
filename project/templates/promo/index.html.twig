@@ -1,0 +1,26 @@
+{% extends 'base.html.twig' %}
+{% block body %}
+    <h1>Liste des promos</h1>
+    <a href="{{ path('promo_new') }}">Ajouter une promo</a>
+
+    {% if promoList is empty %}
+        <p>Aucune promo pour le moment.</p>
+    {% else %}
+        <table>
+            <thead>
+                <tr>
+                    <th>Id</th>
+                    <th>Nom</th>
+                </tr>
+            </thead>
+            <tbody>
+                {% for promo in promoList %}
+                    <tr>
+                        <td>{{ promo.id }}</td>
+                        <td>{{ promo.name }}</td>
+                    </tr>
+                {% endfor %}
+            </tbody>
+        </table>
+    {% endif %}
+{% endblock %}
