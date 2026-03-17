@@ -8,13 +8,13 @@ use Symfony\Component\HttpFoundation\Response;
 use Symfony\Component\Routing\Attribute\Route;
 
 #[IsGranted("IS_AUTHENTICATED_FULLY")]
-final class LoginController extends AbstractController
+final class NewsController extends AbstractController
 {
-    #[Route("/login", name: "app_login")]
+    #[Route("/news", name: "app_news")]
     public function index(): Response
     {
-        return $this->render("login/index.html.twig", [
-            "controller_name" => "LoginController",
+        return $this->render("news/index.html.twig", [
+            "controller_name" => "NewsController",
         ]);
     }
 }

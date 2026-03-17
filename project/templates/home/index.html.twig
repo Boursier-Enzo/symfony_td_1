@@ -6,6 +6,9 @@
 
 
 <div class="example-wrapper">
+    {% if app.user %}
+        {% include 'layouts/nav.html.twig' %}
+    {% endif %}
     <h1>Welcome ! ✅</h1>
 </div>
 {% endblock %}

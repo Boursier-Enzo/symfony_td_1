@@ -1,0 +1,21 @@
+{% extends 'base.html.twig' %}
+
+{% block title %}Hello NewsController!{% endblock %}
+
+{% block body %}
+<style>
+    .example-wrapper { width: 100%; font: 18px/1.5 sans-serif; }
+    .example-wrapper code { background: #F5F5F5;}
+</style>
+
+<div class="example-wrapper">
+    {% include 'layouts/nav.html.twig' %}
+    <h1>Hello {{ controller_name }}! ✅</h1>
+
+    This friendly message is coming from:
+    <ul>
+        <li>Your controller at <code>/var/www/src/Controller/NewsController.php</code></li>
+        <li>Your template at <code>/var/www/templates/news/index.html.twig</code></li>
+    </ul>
+</div>
+{% endblock %}
