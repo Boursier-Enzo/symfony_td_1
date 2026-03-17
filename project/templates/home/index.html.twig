@@ -1,18 +1,62 @@
 {% extends 'base.html.twig' %}
-
-{% block title %}Welcome !{% endblock %}
-
+{% block title %}Home{% endblock %}
 {% block body %}
-
-
-<div class="example-wrapper">
     {% if app.user %}
         {% include 'layouts/nav.html.twig' %}
     {% endif %}
-    <h1>Welcome ! ✅</h1>
     {% if not app.user %}
         <a class='home-btn' href="{{ path('app_login') }}">Se connecter</a>
+        <a class='home-btn' href="{{ path('app_register') }}">Créer un compte</a>
     {% endif %}
 
-</div>
+    <h1>Events</h1>
+    {% for promo, days in schedule %}
+        <h2>Promo : {{ promo }}</h2>
+        <div>
+            {% for day, events in days %}
+                <div>
+                    <h3>{{ day|date('d/m/Y') }}</h3>
+                    {% for event in events %}
+                        <div>
+                            <strong>
+                                {{ event.startDate|date('H:i') }}
+                                -
+                                {{ event.endDate ? event.endDate|date('H:i') : '?' }}
+                            </strong><br>
+                            {{ event.title }}<br>
+                            Room: {{ event.room }}<br>
+                            Speaker: {{ event.speaker }}
+                        </div>
+                    {% endfor %}
+                </div>
+            {% endfor %}
+        </div>
+    {% else %}
+        <p>No events yet.</p>
+    {% endfor %}
+
+    <h1>News</h1>
+    {% for news in newsList %}
+        <div>
+            <h3>{{ news.title }}</h3>
+            <p>{{ news.content }}</p>
+            {% if news.source %}
+                <a href="{{ news.source }}" target="_blank">See source</a>
+            {% endif %}
+        </div>
+    {% else %}
+        <p>No news yet.</p>
+    {% endfor %}
+
+    <h1>RSS Feed</h1>
+    {% for item in rssItems %}
+        <div>
+            <h3>{{ item.titre }}</h3>
+            <p>{{ item.description }}</p>
+            <a href="{{ item.lien }}" target="_blank">See source</a>
+            <small>{{ item.date }}</small>
+        </div>
+    {% else %}
+        <p>No articles available.</p>
+    {% endfor %}
 {% endblock %}

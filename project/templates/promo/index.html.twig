@@ -1,7 +1,7 @@
 {% extends 'base.html.twig' %}
 {% block body %}
     <h1>Liste des promos</h1>
-    <a href="{{ path('promo_new') }}">Ajouter une promo</a>
+    <a href="{{ path('admin') }}">Ajouter une promo</a>
 
     {% if promoList is empty %}
         <p>Aucune promo pour le moment.</p>

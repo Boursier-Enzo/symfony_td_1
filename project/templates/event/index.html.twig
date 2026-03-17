@@ -33,7 +33,7 @@
                         <td>{{ event.endDate ? event.endDate|date('d/m/Y') : '-' }}</td>
                         <td>{{ event.room}}</td>
                         <td>{{ event.speaker}}</td>
-                        <td>{{ event.promo}}</td>
+                        <td>{{ event.promo.name }}</td>
                     </tr>
                 {% endfor %}
             </tbody>
